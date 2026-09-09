@@ -1,0 +1,889 @@
+:root {
+    --ink: #353535;
+    --muted: #8b8b8b;
+    --gold: #d3b680;
+    --paper: #fff;
+    --soft: #f7f7f7
+}
+
+* {
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: 'DM Sans', Arial, sans-serif
+}
+
+a {
+    color: inherit;
+    text-decoration: none
+}
+
+.site-header {
+    height: 132px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2.65%;
+    overflow: hidden
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 0
+}
+
+.brand-mark {
+    width: 84px;
+    height: 84px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: #1d1d1d;
+    color: #e75032;
+    border: 7px double #eee;
+    font-size: 43px;
+    line-height: 1
+}
+
+.brand-text {
+    font-size: 29px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    line-height: 1.15
+}
+
+.brand-text small {
+    display: block;
+    font-size: 25px;
+    font-weight: 500;
+    margin: 3px 0 0 18px
+}
+
+.instagram {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    gap: 11px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.instagram-icon {
+    display: block; /* ✅关键！span行内元素，设置宽高必须加这个 */
+    width: 36px;
+    height: 36px;
+}
+
+.instagram-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.section {
+    width: 94.7%;
+    margin: 0 auto
+}
+
+.hero {
+    position: relative;
+    height: 555px;
+    border-radius: 19px;
+    overflow: hidden
+}
+
+.image-placeholder {
+    position: relative;
+    overflow: hidden;
+    border-radius: 17px
+}
+
+.image-placeholder span {
+    position: absolute;
+    left: 20px;
+    bottom: 18px;
+    padding: 7px 11px;
+    background: rgba(255, 255, 255, .86);
+    font-size: 11px;
+    color: var(--ink);
+    letter-spacing: .02em
+}
+
+/* ✅重点！父容器必须加上 position:relative，否则子absolute盒子直接失踪 */
+.hero {
+    position: relative;
+    min-height: 600px; /*给区块高度，不然absolute内部内容会把父高度压成0，整块看不见*/
+    max-width:1300px; /* ✅限制最大宽度 */
+    margin:0 auto;    /* 整体居中 */
+}
+
+.hero-image {
+    position: absolute;
+    inset: 0;
+    border-radius: 0;
+}
+
+.hero-real-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* 你的半透明遮罩，原样保留不动 */
+.hero-image:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(53, 29, 15, .2);
+}
+
+.hero-copy {
+    position: absolute;
+    left: 8%;
+    right: 8%;
+    top: 42%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: white;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, .45);
+    z-index: 2;
+}
+
+.hero h1 {
+    font-size: 43px;
+    line-height: 1.1;
+    margin: 0 0 15px;
+    font-weight: 700;
+}
+
+.hero-copy p {
+    font-size: 19px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/*左下角小字*/
+.hero-image span {
+    position:absolute;
+    bottom:8px;
+    left:8px;
+    z-index:3;
+    color:#fff;
+}
+
+
+.contact-strip {
+    position: absolute;
+    z-index: 1;
+    left: 4.7%;
+    right: 4.7%;
+    bottom: 55px;
+    min-height: 120px;
+    border-radius: 15px;
+    background: rgba(39, 31, 24, .2);
+    backdrop-filter: blur(12px);
+    display: grid;
+    grid-template-columns: 1.35fr .85fr 1.2fr;
+    align-items: center;
+    padding: 22px 37px;
+    color: white;
+    font-style: normal;
+    gap: 22px
+}
+
+.contact-strip a,
+.visit-contact a {
+    font-size: 23px;
+    font-weight: 700;
+    white-space: nowrap
+}
+
+.contact-strip b,
+.visit-contact b {
+    font-size: 31px;
+    color: var(--gold);
+    vertical-align: middle;
+    margin-right: 13px;
+    line-height: 0
+}
+
+.menu-favorites {
+    padding-top: 120px
+}
+
+.section h2 {
+    font-size: 40px;
+    line-height: 1.1;
+    margin: 0 0 60px;
+    font-weight: 700
+}
+
+.section h2 em {
+    color: var(--gold);
+    font-style: normal
+}
+
+.menu-layout {
+    display: grid;
+    grid-template-columns: 43% 1fr;
+    gap: 35px
+}
+
+.favorites-list {
+    padding: 0 13px
+}
+
+.favorite {
+    padding: 17px 0 20px
+}
+
+.favorite.featured {
+    background: #f5f5f5;
+    border-radius: 13px;
+    padding: 20px 16px;
+    margin-bottom: 1px
+}
+
+.favorite h3 {
+    font-size: 20px;
+    margin: 0 0 17px;
+    font-weight: 700
+}
+
+.favorite p {
+    font-size: 20px;
+    line-height: 1.48;
+    color: var(--muted);
+    margin: 0
+}
+
+.menu-aside {
+    min-width: 0
+}
+
+.menu-photo {
+    height: 800px;
+    position: relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.menu-photo img{
+    max-width:80%;
+    max-height:100%;
+    border-radius:28px;
+    object-fit:contain;
+}
+
+
+.gold-button {
+    height: 68px;
+    margin-top: 39px;
+    padding: 0 39px;
+    border-radius: 10px;
+    background: var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 27px;
+    font-weight: 500;
+    transition: filter .2s
+}
+
+.gold-button:hover {
+    filter: brightness(.93)
+}
+
+.gold-button span {
+    font-size: 38px;
+    font-weight: 400
+}
+
+.japan-trip {
+    padding-top: 235px
+}
+
+.japan-trip>h2 {
+    text-align: center;
+    margin-bottom: 94px
+}
+
+.trip-layout {
+    display: grid;
+    grid-template-columns: 38% 1fr;
+    gap: 55px;
+    align-items: start
+}
+
+.trip-copy .eyebrow,
+.challenge-copy .eyebrow {
+    color: #777;
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 1.35;
+    margin: 5px 0 31px
+}
+
+.eyebrow i {
+    width: 28px;
+    height: 28px;
+    border: 2px solid #e3d4ba;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 16px
+}
+
+.trip-copy>p:last-child {
+    font-size: 28px;
+    line-height: 1.43;
+    font-weight: 700;
+    margin: 0
+}
+
+.story-photo {
+    height: 405px;
+    /*background: #6f8a4a;*/
+    background-image: radial-gradient(circle at 48% 53%, #bd7e42 0 19%, transparent 19.5%), linear-gradient(135deg, #8da769, #425929)
+}
+
+.slider-dots {
+    display: flex;
+    gap: 10px;
+    margin-top: 23px
+}
+
+.slider-dots>* {
+  display: block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #e7e7e7;
+  cursor:pointer;
+}
+.slider-dots>*.active {
+  width: 28px;
+  border-radius: 10px;
+  background: var(--gold);
+}
+
+
+.challenge {
+    padding-top: 205px;
+    display: grid;
+    grid-template-columns: 48% 1fr;
+    gap: 9%;
+    align-items: start
+}
+
+.challenge-photo {
+    height: 600px;
+    /*background-image: radial-gradient(circle at 50% 74%, #f3d49b 0 10%, transparent 10.5%), radial-gradient(circle at 44% 36%, #452d1e 0 28%, transparent 28.5%), linear-gradient(130deg, #6e3828, #d08e4a)*/
+    background-image: url("./image/3.JPG");
+    background-size: 90% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.challenge-copy {
+    padding-top: 4px
+}
+
+.challenge-copy h2 {
+    font-size: 39px;
+    margin-bottom: 46px;
+    white-space: nowrap
+}
+
+.dot-pattern {
+    padding: 34px 0 0 20px;
+    position: relative;
+    width: 530px;
+}
+
+.dot-pattern:before {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    left: -164px;
+    top: 0;
+    width: 150px;
+    height: 270px;
+    background-image: radial-gradient(var(--gold) 4px, transparent 5px);
+    background-size: 25px 25px;
+    opacity: .75
+}
+
+.dot-pattern p {
+    font-size: 27px;
+    line-height: 34px;
+    margin-top: 16px!important
+}
+
+.dot-pattern .gold-button {
+    margin-top: 42px;
+    width: 290px
+}
+
+.visit {
+    padding-top: 170px;
+    padding-bottom: 110px
+}
+
+.visit h2 {
+    margin-bottom: 52px
+}
+
+.visit-contact {
+    display: grid;
+    grid-template-columns: 1.25fr .65fr 1fr;
+    align-items: center;
+    font-style: normal;
+    gap: 34px;
+    margin-bottom: 67px
+}
+
+.visit-contact a {
+    font-size: 2px
+}
+
+.image-wall {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 0 4.2%
+}
+
+.image-wall>* {
+    height: 430px;
+    border-radius: 14px
+}
+
+.wall-one {
+    background: linear-gradient(130deg, #b77b43, #e4c78d);
+    background-image: url("./image/1.JPG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wall-two {
+    background: linear-gradient(150deg, #3e3331, #a8733d);
+    background-image: url("./image/2.JPG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wall-three {
+    background: linear-gradient(140deg, #d9a16a, #5f3c2d);
+    background-image: url("./image/3.JPG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wall-four {
+    background: linear-gradient(130deg, #c77a46, #563c29);
+    background-image: url("./image/4.JPG");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media(max-width:900px) {
+    .site-header {
+        height: 95px
+    }
+
+    .brand-mark {
+        width: 61px;
+        height: 61px;
+        font-size: 31px;
+        border-width: 5px
+    }
+
+    .brand-text {
+        font-size: 22px
+    }
+
+    .brand-text small {
+        font-size: 18px
+    }
+
+    .instagram {
+        font-size: 14px;
+        gap: 11px
+    }
+
+    .instagram-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 25px
+    }
+
+    .hero {
+        height: 510px
+    }
+
+    .contact-strip {
+        left: 3%;
+        right: 3%;
+        bottom: 35px;
+        padding: 18px;
+        gap: 12px
+    }
+
+    .contact-strip a {
+        font-size: 12px
+    }
+
+    .contact-strip b {
+        font-size: 23px
+    }
+
+    .section {
+        width: 92%
+    }
+
+    .menu-layout {
+        grid-template-columns: 1fr
+    }
+
+    .menu-photo {
+        height: 440px
+    }
+
+    .japan-trip {
+        padding-top: 140px
+    }
+
+    .trip-layout {
+        gap: 35px
+    }
+
+    .trip-copy>p:last-child {
+        font-size: 22px
+    }
+
+    .challenge {
+        gap: 5%
+    }
+
+    .visit-contact {
+        grid-template-columns: 1fr 1fr
+    }
+
+    .image-wall {
+        padding: 0;
+        gap: 13px
+    }
+
+    .image-wall>* {
+        height: 290px
+    }
+}
+
+@media(max-width:620px) {
+    .site-header {
+        height: 82px;
+        padding: 0 18px
+    }
+
+    .brand {
+        gap: 9px
+    }
+
+    .brand-mark {
+        width: 48px;
+        height: 48px;
+        font-size: 25px
+    }
+
+    .brand-text {
+        font-size: 16px
+    }
+
+    .brand-text small {
+        font-size: 14px;
+        margin-left: 10px
+    }
+
+    .instagram span:last-child {
+        display: none
+    }
+
+    .hero {
+        height: 500px;
+        border-radius: 12px
+    }
+
+    .hero-copy {
+        left: 8%;
+        right: 8%;
+        top: 33%
+    }
+
+    .hero h1 {
+        font-size: 31px
+    }
+
+    .hero-copy p {
+        font-size: 15px;
+        line-height: 1.4
+    }
+
+    .contact-strip {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        bottom: 22px;
+        min-height: 0;
+        padding: 16px 18px
+    }
+
+    .contact-strip a {
+        font-size: 11px
+    }
+
+    .contact-strip b {
+        font-size: 20px;
+        margin-right: 8px
+    }
+
+    .menu-favorites {
+        padding-top: 75px
+    }
+
+    .section h2 {
+        font-size: 31px;
+        margin-bottom: 38px
+    }
+
+    .menu-layout {
+        gap: 24px
+    }
+
+    .favorites-list {
+        padding: 0
+    }
+
+    .favorite {
+        padding: 16px 0
+    }
+
+    .favorite h3 {
+        font-size: 17px;
+        margin-bottom: 9px
+    }
+
+    .favorite p {
+        font-size: 14px
+    }
+
+    .menu-photo {
+        height: 310px
+    }
+
+    .gold-button {
+        height: 58px;
+        margin-top: 20px;
+        font-size: 20px;
+        padding: 0 24px
+    }
+
+    .japan-trip {
+        padding-top: 100px
+    }
+
+    .japan-trip>h2 {
+        text-align: left;
+        margin-bottom: 38px
+    }
+
+    .trip-layout,
+    .challenge {
+        grid-template-columns: 1fr;
+        gap: 33px
+    }
+
+    .trip-copy .eyebrow,
+    .challenge-copy .eyebrow {
+        font-size: 14px;
+        margin-bottom: 18px
+    }
+
+    .trip-copy>p:last-child {
+        font-size: 20px
+    }
+
+    .story-photo {
+        height: 290px
+    }
+
+    .challenge {
+        padding-top: 110px
+    }
+
+    .challenge-photo {
+        height: 365px
+    }
+
+    .challenge-copy h2 {
+        font-size: 31px;
+        white-space: normal;
+        margin-bottom: 25px
+    }
+
+    .dot-pattern {
+        padding-top: 23px
+    }
+
+    .dot-pattern:before {
+        left: -10px;
+        opacity: .25
+    }
+
+    .dot-pattern p {
+        font-size: 16px
+    }
+
+    .dot-pattern .gold-button {
+        width: 235px
+    }
+
+    .visit {
+        padding-top: 100px;
+        padding-bottom: 70px
+    }
+
+    .visit h2 {
+        margin-bottom: 30px
+    }
+
+    .visit-contact {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 35px
+    }
+
+    .visit-contact a {
+        font-size: 13px
+    }
+
+    .visit-contact b {
+        font-size: 23px
+    }
+
+    .image-wall {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px
+    }
+
+    .image-wall>* {
+        height: 230px
+    }
+}
+/*=====轮播样式=====*/
+.gallery-slider {
+  position: relative;
+}
+.slider-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.slide {
+  display: none;
+  position: relative;
+}
+.slide.active {
+  display: block;
+}
+/*左下角图片文字，只有active的slide才会显示*/
+.slide-caption {
+  position: absolute;
+  left: 22px;
+  bottom: 22px;
+  color: #ffffff;
+  font-size:18px;
+  z-index: 5;
+  margin:0;
+  /*可选半透明黑底，还原截图氛围感*/
+  background:rgba(0,0,0,0.35);
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+/*切换按钮*/
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: background 0.2s, transform 0.2s;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1px solid #999;
+  background:#fff;
+  font-size:18px;
+  cursor:pointer;
+  z-index:10;
+}
+.slider-btn.prev {
+  left:12px;
+}
+.slider-btn.next {
+  right:12px;
+}
+.slider-btn:hover {
+  background:#c7996a;
+  transform: translateY(-50%) scale(1.08);
+  transform-origin:center;
+  color:#ffffff;
+}
+/*第一张轮播图 slide1*/
+.slide:nth-child(1) .story-photo{
+    background-image: url("./image/3.JPG");
+    background-size: 80% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/*第二张轮播图 slide2*/
+.slide:nth-child(2) .story-photo{
+    background-image: url("./image/4.JPG");
+    background-size: 80% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+/*第三张轮播图 slide3*/
+.slide:nth-child(3) .story-photo{
+    background-image: url("./image/1.JPG");
+    background-size: 80% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.visit-card {
+  background: #f3f3f3;
+  border-radius: 14px;
+  padding: 40px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .06); /* 可选，增加一点层次 */
+  max-width: 1200px;  /* ✨最大宽度，卡片不会无限拉宽 */
+  width: 95%;         /* ✨默认占父容器95%，两边留一点点空隙，适配手机 */
+  margin: 0 auto;     /* ✨非常重要！让卡片水平居中，不然卡片贴左边 */
+}
+
+.visit-card .image-wall {
+  padding: 0;
+  gap: 16px;
+}
